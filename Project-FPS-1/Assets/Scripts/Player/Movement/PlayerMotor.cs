@@ -25,7 +25,6 @@ public class PlayerMotor : MonoBehaviour
         controller.Move(transform.TransformDirection(moveDir) * speed * Time.deltaTime);
     }
     void Gravity(){
-        Debug.Log(playerVelocity.y);
         //add gravity
         playerVelocity.y += gravity * Time.deltaTime;
         //harden the gravity on fall
