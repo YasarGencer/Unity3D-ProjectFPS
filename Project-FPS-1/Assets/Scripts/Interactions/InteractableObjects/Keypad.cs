@@ -32,7 +32,10 @@ public class Keypad : Interactable
     IEnumerator SetUnInteractable(string prompt){
         promptMessage = "Please Wait";
         isInteractable = false;
-        yield return new WaitForSeconds(animationTimer);
+        yield return new WaitForSeconds(.3f);
+        GameObject.Find("GameManager").GetComponent<NavBaker>().BAKE();
+        yield return new WaitForSeconds(animationTimer - .3f);
+        GameObject.Find("GameManager").GetComponent<NavBaker>().BAKE();
         promptMessage = prompt;
         isInteractable = true;
     }
