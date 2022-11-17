@@ -12,6 +12,9 @@
   - PlayerWeapon: Abstract Class
   - PlayerWeaponManager: Inherits PlayerWeapon
   - StructWeapon: Scriptable struct object for weapon
+  - Weapons:
+    - Pistol
+    - Rifle
 
 ## Enemy
 - EnemyMain
