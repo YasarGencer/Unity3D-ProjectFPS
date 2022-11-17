@@ -2,17 +2,21 @@ using UnityEngine;
 
 public class WeaponInteractable : Interactable
 {
-    enum WeaponsEnum{
-        PISTOL, RIFLE
-    }
-    [SerializeField] private WeaponsEnum _weapon;
+    [SerializeField] private Weapon _weapon;
 
     protected override void Interact()
     {
-        switch (_weapon)
+        //SET SCRIPTABLE OBJECT TO PLAYER WEAPON MANAGER
+        PlayerWeaponManager.Instance.Weapon(_weapon.weapon);
+        //EQUIP CHOOSEN WEAPON
+        switch (_weapon.weapon.Name)
         {
-            case WeaponsEnum.PISTOL: PlayerWeaponManager.Instance.Equip(new Pistol()); break;
-            case WeaponsEnum.RIFLE: PlayerWeaponManager.Instance.Equip(new Rifle()); break;
+            case "Pistol":
+                PlayerWeaponManager.Instance.Equip(new Pistol());
+                break;
+            case "Rifle":
+                PlayerWeaponManager.Instance.Equip(new Rifle());
+                break;
         }
     }
 }

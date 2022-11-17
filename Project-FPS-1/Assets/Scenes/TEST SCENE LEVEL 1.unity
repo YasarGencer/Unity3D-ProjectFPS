@@ -1686,7 +1686,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UseEvent: 1
   promptMessage: Equip Rifle
-  _weapon: 1
+  s: 1
+  _weapon: {fileID: 11400000, guid: 83c59076f5add9c498bacf05228cc24f, type: 2}
 --- !u!65 &448481329
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2849,7 +2850,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UseEvent: 1
   promptMessage: Equip Pistol
-  _weapon: 0
+  s: 0
+  _weapon: {fileID: 11400000, guid: a4fab26f79debeb4097b42458cb06ce5, type: 2}
 --- !u!43 &1647990098
 Mesh:
   m_ObjectHideFlags: 0

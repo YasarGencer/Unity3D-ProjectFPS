@@ -10,4 +10,8 @@ public class PlayerUI : MonoBehaviour
     public void SetText(TextMeshProUGUI textObject, string text){
         textObject.SetText(text);
     }
+    public void WeaponUI(StructWeapon weapon)
+    {
+
+    }
 }
