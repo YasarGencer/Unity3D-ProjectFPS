@@ -11,13 +11,14 @@ public class InputManager : MonoBehaviour
     //CONTROLLER SCRIPTS
     private PlayerMotor playerMotor;
     private PlayerLook playerLook;
-
+    private PlayerWeaponManager playerWeapon;
 
     void Awake(){
         playerInput = new PlayerInput();
         onFoot = playerInput.OnFoot;
         playerMotor = GetComponent<PlayerMotor>();
         playerLook = GetComponent<PlayerLook>();
+        playerWeapon = GetComponent<PlayerWeaponManager>();
         SetInputPerformed();
     }
 
@@ -32,6 +33,9 @@ public class InputManager : MonoBehaviour
 
     private void SetInputPerformed(){
         onFoot.Jump.performed += ctx => playerMotor.Jump();
+        onFoot.Shoot.performed += ctx => playerWeapon.Shoot();
+        onFoot.Reload.performed += ctx => playerWeapon.Reload();
+
     }
     #region ENABLES
     private void OnEnable() {
