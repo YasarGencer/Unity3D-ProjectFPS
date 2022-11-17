@@ -5,52 +5,52 @@ using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
-    private float health, chipTimer;
-    public float maxHealth = 100f, chipSpeed = 2f;
-    public Slider backHealth, frontHealth;
+    private float _health, _chipTimer;
+    [SerializeField] private float _maxHealth = 100f, _chipSpeed = 2f;
+    private Slider _backHealth, _frontHealth;
 
     private void Start() {
-        health = maxHealth;
+        _health = _maxHealth;
         SetSliders();
     }
     private void SetSliders(){
-        frontHealth.maxValue = maxHealth;
-        backHealth.maxValue = maxHealth;
-        frontHealth.value = maxHealth;
-        backHealth.value = maxHealth;
+        _frontHealth.maxValue = _maxHealth;
+        _backHealth.maxValue = _maxHealth;
+        _frontHealth.value = _maxHealth;
+        _backHealth.value = _maxHealth;
     }
     private void Update() {
-        health = Mathf.Clamp(health,0,maxHealth);
+        _health = Mathf.Clamp(_health,0,_maxHealth);
         UpdateHealthUI();
     }
     private void UpdateHealthUI(){
         //get slider values
-        float frontvalue = frontHealth.value;
-        float backvalue = backHealth.value;
+        float frontvalue = _frontHealth.value;
+        float backvalue = _backHealth.value;
         //check slider values
-        if(backvalue > health){
-            frontHealth.value = health;
-            backHealth.GetComponentInChildren<Image>().color = Color.red;
-            chipTimer += Time.deltaTime;
-            float percentComplete = chipTimer/chipSpeed;
+        if(backvalue > _health){
+            _frontHealth.value = _health;
+            _backHealth.GetComponentInChildren<Image>().color = Color.red;
+            _chipTimer += Time.deltaTime;
+            float percentComplete = _chipTimer/_chipSpeed;
             percentComplete *= percentComplete;
-            backHealth.value = Mathf.Lerp(backvalue,health,percentComplete);
+            _backHealth.value = Mathf.Lerp(backvalue,_health,percentComplete);
         }
-        else if(frontvalue < health){
-            backHealth.value = health;
-            backHealth.GetComponentInChildren<Image>().color = Color.green;
-            chipTimer += Time.deltaTime;
-            float percentComplete = chipTimer/chipSpeed;
+        else if(frontvalue < _health){
+            _backHealth.value = _health;
+            _backHealth.GetComponentInChildren<Image>().color = Color.green;
+            _chipTimer += Time.deltaTime;
+            float percentComplete = _chipTimer/_chipSpeed;
             percentComplete *= percentComplete;
-            frontHealth.value = Mathf.Lerp(frontvalue,health,percentComplete);
+            _frontHealth.value = Mathf.Lerp(frontvalue,_health,percentComplete);
         }
     }
     public void TakeDamage(float value){
-        health -= value;
-        chipTimer = 0;
+        _health -= value;
+        _chipTimer = 0;
     }
     public void RestoreHealth(float value){
-        health += value;
-        chipTimer = 0;
+        _health += value;
+        _chipTimer = 0;
     }
 }

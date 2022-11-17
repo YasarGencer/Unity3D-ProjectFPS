@@ -6,8 +6,8 @@ using UnityEngine.AI;
 public class NavBaker : MonoBehaviour {
 
     public static NavBaker Instance;
-    public GameObject[] surfaces;
-    public GameObject[] objectsToRotate;
+    private GameObject[] _surfaces;
+    public GameObject[] _objectsToRotate;
     
     void Awake(){
         if(Instance == null)
@@ -16,16 +16,16 @@ public class NavBaker : MonoBehaviour {
         BAKE();
     }
     void FindAll(){
-        surfaces = GameObject.FindGameObjectsWithTag(TagManager.Instance.TagStaticNavSurface());
-        objectsToRotate = GameObject.FindGameObjectsWithTag(TagManager.Instance.TagDynamicNavSurface());
+        _surfaces = GameObject.FindGameObjectsWithTag(TagManager.Instance.TagStaticNavSurface());
+        _objectsToRotate = GameObject.FindGameObjectsWithTag(TagManager.Instance.TagDynamicNavSurface());
         Debug.Log("Surface Info Gathered Succesfully");
     }
     public void BAKE(){
-        for (int j = 0; j < objectsToRotate.Length; j++) {
-            objectsToRotate[j].transform.localRotation = Quaternion.Euler (new Vector3 (0, 50*Time.deltaTime, 0) + objectsToRotate[j].transform.localRotation.eulerAngles);
+        for (int j = 0; j < _objectsToRotate.Length; j++) {
+            _objectsToRotate[j].transform.localRotation = Quaternion.Euler (new Vector3 (0, 50*Time.deltaTime, 0) + _objectsToRotate[j].transform.localRotation.eulerAngles);
         }
-        for (int i = 0; i < surfaces.Length; i++) {
-            surfaces[i].GetComponent<NavMeshSurface>().BuildNavMesh();    
+        for (int i = 0; i < _surfaces.Length; i++) {
+            _surfaces[i].GetComponent<NavMeshSurface>().BuildNavMesh();    
         }
         Debug.Log("Surface (re)baked Succesfully");
     }

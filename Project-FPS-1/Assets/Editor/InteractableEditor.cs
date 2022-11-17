@@ -12,14 +12,14 @@ public class InteractableEditor : Editor
             EditorGUILayout.HelpBox("EventOnlyInteract can ONLY use UnityEvents.", MessageType.Info);
             //add event clicks
             if(interactable.GetComponent<InteractionEvents>() == null){
-                interactable.useEvent = true;
+                interactable.UseEvent = true;
                 interactable.gameObject.AddComponent<InteractionEvents>();
             }
         }
         else{
             base.OnInspectorGUI();
             //add event clicks
-            if(interactable.useEvent){
+            if(interactable.UseEvent){
                 if(interactable.GetComponent<InteractionEvents>() == null)    
                     interactable.gameObject.AddComponent<InteractionEvents>();
             }

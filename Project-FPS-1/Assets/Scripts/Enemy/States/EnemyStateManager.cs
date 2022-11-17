@@ -4,29 +4,29 @@ using UnityEngine;
 
 public class EnemyStateManager : MonoBehaviour
 {
-    public EnemyBaseState activeState;
+    public EnemyBaseState ActiveState;
 
     //STATES
-    public EnemyPatrolState patrolState;
+    public EnemyPatrolState PatrolState;
 
     public void Init(){
-        patrolState = new EnemyPatrolState();
-        ChangeState(patrolState);
+        PatrolState = new EnemyPatrolState();
+        ChangeState(PatrolState);
     }
     private void Update() {
-        if(activeState != null){
-            activeState.Perform();
+        if(ActiveState != null){
+            ActiveState.Perform();
         }
     }
     public void ChangeState(EnemyBaseState nextState){
-        if(activeState != null){
-            activeState.Exit();
+        if(ActiveState != null){
+            ActiveState.Exit();
         }
-        activeState = nextState;
-        if(activeState != null){
-            activeState.stateManager = this;
-            activeState.enemy = GetComponent<EnemyMain>();
-            activeState.Enter();
+        ActiveState = nextState;
+        if(ActiveState != null){
+            ActiveState.stateManager = this;
+            ActiveState.enemy = GetComponent<EnemyMain>();
+            ActiveState.Enter();
         }
     }
 }

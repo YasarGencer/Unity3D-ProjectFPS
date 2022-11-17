@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerWeaponManager : MonoBehaviour
 {
     public static PlayerWeaponManager Instance;
-    private PlayerWeapon weapon = null;
+    private PlayerWeapon _weapon = null;
 
     //WEAPONS
     public PlayerWeaponTestInstance test;
@@ -16,24 +16,24 @@ public class PlayerWeaponManager : MonoBehaviour
         //Equip(test);
     }    
     public void Equip(PlayerWeapon weapon){
-        if(this.weapon != null){
+        if(this._weapon != null){
             this.Drop();
         }
-        this.weapon = weapon;
-        if(this.weapon != null){
-            this.weapon.Equip();
+        this._weapon = weapon;
+        if(this._weapon != null){
+            this._weapon.Equip();
         }
     }
     public void Shoot(){
-        if(weapon != null)
-            weapon.Shoot();
+        if(_weapon != null)
+            _weapon.Shoot();
     }
     public void Reload(){
-        if(weapon != null)
-            weapon.Reload();
+        if(_weapon != null)
+            _weapon.Reload();
     }
     public void Drop(){
-        if(weapon != null)
-            weapon.Drop();
+        if(_weapon != null)
+            _weapon.Drop();
     }
 }

@@ -5,47 +5,47 @@ using UnityEditor;
 public class EnemyPath : MonoBehaviour
 {
 
-    public List<Transform> waypoints;
+    public List<Transform> Waypoints;
     [SerializeField]
-    private bool alwaysDrawPath;
+    private bool _alwaysDrawPath;
     [SerializeField]
-    private bool drawAsLoop;
+    private bool _drawAsLoop;
     [SerializeField]
-    private bool drawNumbers;
-    public Color debugColour = Color.white;
+    private bool _drawNumbers;
+    public Color DebugColour = Color.white;
 
 #if UNITY_EDITOR
     public void OnDrawGizmos()
     {
-        if (alwaysDrawPath)
+        if (_alwaysDrawPath)
         {
             DrawPath();
         }
     }
     public void DrawPath()
     {
-        for (int i = 0; i < waypoints.Count; i++)
+        for (int i = 0; i < Waypoints.Count; i++)
         {
             GUIStyle labelStyle = new GUIStyle();
             labelStyle.fontSize = 30;
-            labelStyle.normal.textColor = debugColour;
-            if (drawNumbers)
-                Handles.Label(waypoints[i].position, i.ToString(), labelStyle);
+            labelStyle.normal.textColor = DebugColour;
+            if (_drawNumbers)
+                Handles.Label(Waypoints[i].position, i.ToString(), labelStyle);
             //Draw Lines Between Points.
             if (i >= 1)
             {
-                Gizmos.color = debugColour;
-                Gizmos.DrawLine(waypoints[i - 1].position, waypoints[i].position);
+                Gizmos.color = DebugColour;
+                Gizmos.DrawLine(Waypoints[i - 1].position, Waypoints[i].position);
 
-                if (drawAsLoop)
-                    Gizmos.DrawLine(waypoints[waypoints.Count - 1].position, waypoints[0].position);
+                if (_drawAsLoop)
+                    Gizmos.DrawLine(Waypoints[Waypoints.Count - 1].position, Waypoints[0].position);
 
             }
         }
     }
     public void OnDrawGizmosSelected()
     {
-        if (alwaysDrawPath)
+        if (_alwaysDrawPath)
             return;
         else
             DrawPath();

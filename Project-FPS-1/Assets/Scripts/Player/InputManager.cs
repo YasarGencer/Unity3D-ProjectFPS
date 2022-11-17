@@ -5,49 +5,49 @@ using UnityEngine.InputSystem;
 
 public class InputManager : MonoBehaviour
 {
-    private PlayerInput playerInput;
-    private PlayerInput.OnFootActions onFoot;
+    private PlayerInput _playerInput;
+    private PlayerInput.OnFootActions _onFoot;
 
     //CONTROLLER SCRIPTS
-    private PlayerMotor playerMotor;
-    private PlayerLook playerLook;
-    private PlayerWeaponManager playerWeapon;
+    private PlayerMotor _playerMotor;
+    private PlayerLook _playerLook;
+    private PlayerWeaponManager _playerWeapon;
 
     void Awake(){
-        playerInput = new PlayerInput();
-        onFoot = playerInput.OnFoot;
-        playerMotor = GetComponent<PlayerMotor>();
-        playerLook = GetComponent<PlayerLook>();
-        playerWeapon = GetComponent<PlayerWeaponManager>();
+        _playerInput = new PlayerInput();
+        _onFoot = _playerInput.OnFoot;
+        _playerMotor = GetComponent<PlayerMotor>();
+        _playerLook = GetComponent<PlayerLook>();
+        _playerWeapon = GetComponent<PlayerWeaponManager>();
         SetInputPerformed();
     }
 
     private void FixedUpdate() {
         //HANDLE MOVEMENT
-        Vector3 currentDirection = onFoot.Movement.ReadValue<Vector2>();
-        playerMotor.ProcessMovement(currentDirection);
+        Vector3 currentDirection = _onFoot.Movement.ReadValue<Vector2>();
+        _playerMotor.ProcessMovement(currentDirection);
     }
     private void LateUpdate() {
-        playerLook.ProcessLook(onFoot.Look.ReadValue<Vector2>());
+        _playerLook.ProcessLook(_onFoot.Look.ReadValue<Vector2>());
     }
 
     private void SetInputPerformed(){
-        onFoot.Jump.performed += ctx => playerMotor.Jump();
-        onFoot.Shoot.performed += ctx => playerWeapon.Shoot();
-        onFoot.Reload.performed += ctx => playerWeapon.Reload();
+        _onFoot.Jump.performed += ctx => _playerMotor.Jump();
+        _onFoot.Shoot.performed += ctx => _playerWeapon.Shoot();
+        _onFoot.Reload.performed += ctx => _playerWeapon.Reload();
 
     }
     #region ENABLES
     private void OnEnable() {
-        onFoot.Enable();
+        _onFoot.Enable();
     }
     private void OnDisable() {
-        onFoot.Disable();
+        _onFoot.Disable();
     }
     #endregion
     #region GETTER SETTERS
     public PlayerInput.OnFootActions GetOnFoot(){
-        return onFoot;
+        return _onFoot;
     }
     #endregion
 }

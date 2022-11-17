@@ -5,8 +5,8 @@ using UnityEngine.AI;
 
 public class EnemyPatrolState : EnemyBaseState
 {
-    public int waypointIndex;
-    public float waitTimer = 0;
+    private int _waypointIndex;
+    private float _waitTimer = 0;
     public override void Enter(){
         Debug.Log("PATROL START");
     }
@@ -20,19 +20,19 @@ public class EnemyPatrolState : EnemyBaseState
 
     public void PatrolCycle(){
         if(enemy.Agent.remainingDistance < 0.2f){
-            waitTimer += Time.deltaTime;
-            if(waitTimer > 3){
-                if(waypointIndex < enemy.path.waypoints.Count - 1){
-                    waypointIndex++;
+            _waitTimer += Time.deltaTime;
+            if(_waitTimer > 3){
+                if(_waypointIndex < enemy.Path.Waypoints.Count - 1){
+                    _waypointIndex++;
                 }
                 else {
-                    waypointIndex = 0;
+                    _waypointIndex = 0;
                 }
-                enemy.Agent.SetDestination(enemy.path.waypoints[waypointIndex].position);
-                waitTimer=0;
+                enemy.Agent.SetDestination(enemy.Path.Waypoints[_waypointIndex].position);
+                _waitTimer=0;
             }
         }
         Debug.Log("REMAINING DIST = " + enemy.Agent.remainingDistance);
-        Debug.Log("TARGET POS = " + enemy.path.waypoints[waypointIndex].position);
+        Debug.Log("TARGET POS = " + enemy.Path.Waypoints[_waypointIndex].position);
     }
 }

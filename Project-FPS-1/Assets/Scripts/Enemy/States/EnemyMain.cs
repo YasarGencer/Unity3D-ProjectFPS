@@ -5,17 +5,17 @@ using UnityEngine.AI;
 
 public class EnemyMain : MonoBehaviour
 {
-    private EnemyStateManager stateManager;
-    private NavMeshAgent agent;
-    public NavMeshAgent Agent { get => agent;}
+    private EnemyStateManager _stateManager;
+    private NavMeshAgent _agent;
+    public NavMeshAgent Agent { get => _agent;}
     
-    [SerializeField] private string currentState;
+    [SerializeField] private string _currentState;
 
-    public EnemyPath path;
+    public EnemyPath Path;
     
     private void Awake() {
-        stateManager = GetComponent<EnemyStateManager>();
-        agent = GetComponent<NavMeshAgent>();
-        stateManager.Init();
+        _stateManager = GetComponent<EnemyStateManager>();
+        _agent = GetComponent<NavMeshAgent>();
+        _stateManager.Init();
     }
 }

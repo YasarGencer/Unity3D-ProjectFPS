@@ -5,12 +5,12 @@ using UnityEngine;
 public abstract class Interactable : MonoBehaviour
 {
     //add event to object 
-    public bool useEvent;
+    public bool UseEvent;
     [Tooltip("Message shown when looking to the object")] public string promptMessage;
 
     //Will be called from player
     public void BaseInteract(){
-        if(useEvent)
+        if(UseEvent)
             GetComponent<InteractionEvents>().OnInteract.Invoke(); 
         Interact();
     }
