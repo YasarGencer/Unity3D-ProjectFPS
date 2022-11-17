@@ -1,17 +1,17 @@
 # Unity3D-ProjectTPS
 
 ## Player
-- InputManager
+- InputManager : Controls movement
 - Movement:
-  - Motor
-  - Look
+  - Motor: Includes the main movement functions
+  - Look : Controls player look
 - Health
-- Interact
+- Interact: Looks for interactable objects
 - UI
 
 ## Enemy
 - EnemyMain
-- EnemyBaseState - Abstarct
+- EnemyBaseState - Abstarct Class
 - EnemyStateManager - Inherits EnemyBaseState
 - States:
   - Patrol State
@@ -20,5 +20,5 @@
 - Interactables
 - InteractionEvent
 - Interactions:
-  - Event Only
-  - Keypad
+  - Event Only: Creates interactables uses only events
+  - Keypad: Opens and closes a choosen door
