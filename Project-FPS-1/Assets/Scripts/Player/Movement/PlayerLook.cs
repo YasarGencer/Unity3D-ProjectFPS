@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class PlayerLook : MonoBehaviour
 {
-    [HideInInspector] public Camera Cam;
+    private Camera _cam;
+    public Camera Cam { get { return _cam; } }
     private float _xRotation = 0f;
     [SerializeField] private Vector2 _sensivity = new Vector2(30f,30f);
 
     private void Awake() {
-        Cam = GetComponentInChildren<Camera>();
+        _cam = GetComponentInChildren<Camera>();
     }
 
 
@@ -19,7 +20,7 @@ public class PlayerLook : MonoBehaviour
         //rotate in y axis
         _xRotation -= (mouseY * Time.deltaTime) * _sensivity.y;
         _xRotation = Mathf.Clamp(_xRotation,-80f,+80f);
-        Cam.transform.localRotation = Quaternion.Euler(_xRotation,0,0);
+        _cam.transform.localRotation = Quaternion.Euler(_xRotation,0,0);
         //rotate in x axis
         transform.Rotate(Vector2.up * (mouseX * Time.deltaTime) * _sensivity.x);
     }

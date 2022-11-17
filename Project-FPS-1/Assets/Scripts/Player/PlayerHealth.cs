@@ -7,7 +7,7 @@ public class PlayerHealth : MonoBehaviour
 {
     private float _health, _chipTimer;
     [SerializeField] private float _maxHealth = 100f, _chipSpeed = 2f;
-    private Slider _backHealth, _frontHealth;
+    [SerializeField] private Slider _backHealth, _frontHealth;
 
     private void Start() {
         _health = _maxHealth;

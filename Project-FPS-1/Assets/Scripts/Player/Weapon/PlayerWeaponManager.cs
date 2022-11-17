@@ -7,13 +7,8 @@ public class PlayerWeaponManager : MonoBehaviour
     public static PlayerWeaponManager Instance;
     private PlayerWeapon _weapon = null;
 
-    //WEAPONS
-    public PlayerWeaponTestInstance test;
-
     private void Awake() {
         Instance = this;
-        //test = new PlayerWeaponTestInstance();
-        //Equip(test);
     }    
     public void Equip(PlayerWeapon weapon){
         if(this._weapon != null){

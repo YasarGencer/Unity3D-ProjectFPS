@@ -260,7 +260,6 @@ GameObject:
   - component: {fileID: 4317450168768661162}
   - component: {fileID: 4317450168768661163}
   - component: {fileID: 4317450168768661167}
-  - component: {fileID: 4317450168768661166}
   m_Layer: 6
   m_Name: Keypad
   m_TagString: Untagged
@@ -361,25 +360,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4040571d15b44c945b25e6529c7da016, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  useEvent: 1
+  UseEvent: 0
   promptMessage: Open The Door
-  door: {fileID: 4317450168707342434}
-  animationTimer: 1
---- !u!114 &4317450168768661166
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4317450168768661160}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e7d72847e897887498bd6269d38fb9d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OnInteract:
-    m_PersistentCalls:
-      m_Calls: []
+  _door: {fileID: 4317450168707342436}
+  _animationTimer: 1
+  _openT: Open The Door
+  _closeT: Close The Door
+  _waitT: Please Wait
 --- !u!1 &4317450169820238726
 GameObject:
   m_ObjectHideFlags: 0

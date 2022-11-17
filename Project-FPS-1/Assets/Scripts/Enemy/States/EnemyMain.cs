@@ -8,10 +8,11 @@ public class EnemyMain : MonoBehaviour
     private EnemyStateManager _stateManager;
     private NavMeshAgent _agent;
     public NavMeshAgent Agent { get => _agent;}
-    
-    [SerializeField] private string _currentState;
 
-    public EnemyPath Path;
+    private EnemyPath _path;
+    public EnemyPath Path { get => _path;}
+
+    [SerializeField] private string _currentState;
     
     private void Awake() {
         _stateManager = GetComponent<EnemyStateManager>();

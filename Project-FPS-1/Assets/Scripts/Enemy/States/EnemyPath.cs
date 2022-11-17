@@ -4,8 +4,9 @@ using UnityEngine;
 using UnityEditor;
 public class EnemyPath : MonoBehaviour
 {
-
-    public List<Transform> Waypoints;
+    [SerializeField]
+    private List<Transform> _waypoints;
+    public List<Transform> Waypoints { get { return _waypoints; } }
     [SerializeField]
     private bool _alwaysDrawPath;
     [SerializeField]
@@ -24,21 +25,21 @@ public class EnemyPath : MonoBehaviour
     }
     public void DrawPath()
     {
-        for (int i = 0; i < Waypoints.Count; i++)
+        for (int i = 0; i < _waypoints.Count; i++)
         {
             GUIStyle labelStyle = new GUIStyle();
             labelStyle.fontSize = 30;
             labelStyle.normal.textColor = DebugColour;
             if (_drawNumbers)
-                Handles.Label(Waypoints[i].position, i.ToString(), labelStyle);
+                Handles.Label(_waypoints[i].position, i.ToString(), labelStyle);
             //Draw Lines Between Points.
             if (i >= 1)
             {
                 Gizmos.color = DebugColour;
-                Gizmos.DrawLine(Waypoints[i - 1].position, Waypoints[i].position);
+                Gizmos.DrawLine(_waypoints[i - 1].position, _waypoints[i].position);
 
                 if (_drawAsLoop)
-                    Gizmos.DrawLine(Waypoints[Waypoints.Count - 1].position, Waypoints[0].position);
+                    Gizmos.DrawLine(_waypoints[_waypoints.Count - 1].position, _waypoints[0].position);
 
             }
         }

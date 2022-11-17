@@ -1,32 +1,30 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyStateManager : MonoBehaviour
 {
-    public EnemyBaseState ActiveState;
+    private EnemyBaseState _activeState;
 
     //STATES
-    public EnemyPatrolState PatrolState;
+    private EnemyPatrolState _patrolState;
 
     public void Init(){
-        PatrolState = new EnemyPatrolState();
-        ChangeState(PatrolState);
+        _patrolState = new EnemyPatrolState();
+        ChangeState(_patrolState);
     }
     private void Update() {
-        if(ActiveState != null){
-            ActiveState.Perform();
+        if(_activeState != null){
+            _activeState.Perform();
         }
     }
     public void ChangeState(EnemyBaseState nextState){
-        if(ActiveState != null){
-            ActiveState.Exit();
+        if(_activeState != null){
+            _activeState.Exit();
         }
-        ActiveState = nextState;
-        if(ActiveState != null){
-            ActiveState.stateManager = this;
-            ActiveState.enemy = GetComponent<EnemyMain>();
-            ActiveState.Enter();
+        _activeState = nextState;
+        if(_activeState != null){
+            _activeState.stateManager = this;
+            _activeState.enemy = GetComponent<EnemyMain>();
+            _activeState.Enter();
         }
     }
 }
