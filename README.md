@@ -1,10 +1,24 @@
 # Unity3D-ProjectTPS
 
+## Player
+- InputManager
+- Movement:
+  - Motor
+  - Look
+- Health
+- Interact
+- UI
 
-Wave based
+## Enemy
+- EnemyMain
+- EnemyBaseState - Abstarct
+- EnemyStateManager - Inherits EnemyBaseState
+- States:
+  - Patrol State
 
-Shooter
-
-Low Poly
-
-Random Map Generation
+## Interactables
+- Interactables
+- InteractionEvent
+- Interactions:
+  - Event Only
+  - Keypad
