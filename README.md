@@ -4,7 +4,7 @@
 - InputManager : Controls movement
 - Movement:
   - Motor: Includes the main movement functions
-  - Look : Controls player look
+  - Look: Controls player look
 - Health
 - Interact: Looks for interactable objects
 - UI
