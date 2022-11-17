@@ -8,8 +8,12 @@ public class Keypad : Interactable
     [SerializeField] float animationTimer = 1f;
     Animator doorAnim;
     private bool isOpen = false, isInteractable = true;
+    [SerializeField, Tooltip("Do not change if needed")] string openT = "Open The Door";
+    [SerializeField, Tooltip("Do not change if needed")] string closeT = "Close The Door";
+    [SerializeField, Tooltip("Do not change if needed")] string waitT = "Please Wait";
     private void Start() {
         doorAnim = door.GetComponent<Animator>();
+        promptMessage = openT;
     }
     protected override void Interact(){
         if(isInteractable){
@@ -22,20 +26,18 @@ public class Keypad : Interactable
     private void OpenDoor(){
         doorAnim.SetTrigger("Open");
         isOpen = true;
-        StartCoroutine(SetUnInteractable("Close The Door"));
+        StartCoroutine(SetUnInteractable(closeT));
     }
     private void CloseDoor(){
         doorAnim.SetTrigger("Close");
         isOpen = false;
-        StartCoroutine(SetUnInteractable("Open The Door"));
+        StartCoroutine(SetUnInteractable(openT));
     }
     IEnumerator SetUnInteractable(string prompt){
-        promptMessage = "Please Wait";
+        promptMessage = waitT;
         isInteractable = false;
-        yield return new WaitForSeconds(.3f);
-        GameObject.Find("GameManager").GetComponent<NavBaker>().BAKE();
-        yield return new WaitForSeconds(animationTimer - .3f);
-        GameObject.Find("GameManager").GetComponent<NavBaker>().BAKE();
+        yield return new WaitForSeconds(animationTimer);
+        NavBaker.Instance.BAKE();
         promptMessage = prompt;
         isInteractable = true;
     }

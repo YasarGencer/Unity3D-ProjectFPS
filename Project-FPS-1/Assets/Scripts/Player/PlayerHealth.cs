@@ -7,7 +7,7 @@ public class PlayerHealth : MonoBehaviour
 {
     private float health, chipTimer;
     public float maxHealth = 100f, chipSpeed = 2f;
-    public Slider frontHealth, backHealth;
+    public Slider backHealth, frontHealth;
 
     private void Start() {
         health = maxHealth;

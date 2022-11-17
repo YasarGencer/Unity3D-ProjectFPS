@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
+  - Zone/Wall
+  - Zone/Surface
+  - Zone/SurfaceRotate
+  - Zone/SurfaceNav
   layers:
   - Default
   - TransparentFX

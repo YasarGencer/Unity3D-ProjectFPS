@@ -8,9 +8,10 @@ public class InputManager : MonoBehaviour
     private PlayerInput playerInput;
     private PlayerInput.OnFootActions onFoot;
 
-    //contoller scripts
+    //CONTROLLER SCRIPTS
     private PlayerMotor playerMotor;
     private PlayerLook playerLook;
+
 
     void Awake(){
         playerInput = new PlayerInput();
@@ -21,9 +22,9 @@ public class InputManager : MonoBehaviour
     }
 
     private void FixedUpdate() {
-        //get walking movement
-        Debug.Log("INPUT DIRECTIONS =  " + onFoot.Movement.ReadValue<Vector2>());
-        playerMotor.ProcessMovement(onFoot.Movement.ReadValue<Vector2>());
+        //HANDLE MOVEMENT
+        Vector3 currentDirection = onFoot.Movement.ReadValue<Vector2>();
+        playerMotor.ProcessMovement(currentDirection);
     }
     private void LateUpdate() {
         playerLook.ProcessLook(onFoot.Look.ReadValue<Vector2>());
