@@ -16,9 +16,11 @@ MonoBehaviour:
     Name: Rifle
     Description: Rifle ratatatatatatatatat
     Damage: 15
-    FireRate: 0.025
+    FireRate: 0.3
     MagCapasite: 30
     MagCount: 7
     Range: 15
     Recoil: 0.25
     WalkSpeedEffect: 0.1
+    Ammo: 0
+    ShootTimer: 0

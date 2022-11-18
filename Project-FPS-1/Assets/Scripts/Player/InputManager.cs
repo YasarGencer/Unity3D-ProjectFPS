@@ -10,7 +10,7 @@ public class InputManager : MonoBehaviour
     private PlayerLook _playerLook;
     private PlayerWeaponManager _playerWeapon;
 
-    void Awake(){
+    void Awake() {
         _playerInput = new PlayerInput();
         _onFoot = _playerInput.OnFoot;
         _playerMotor = GetComponent<PlayerMotor>();
@@ -28,10 +28,13 @@ public class InputManager : MonoBehaviour
         _playerLook.ProcessLook(_onFoot.Look.ReadValue<Vector2>());
     }
 
-    private void SetInputPerformed(){
+    private void SetInputPerformed() {
         _onFoot.Jump.performed += ctx => _playerMotor.Jump();
-        _onFoot.Shoot.performed += ctx => _playerWeapon.Shoot();
+        _onFoot.Shoot.started += ctx => _playerWeapon.ShootStart();
+        _onFoot.Shoot.performed += ctx => _playerWeapon.ShootPerform();
+        _onFoot.Shoot.canceled += ctx => _playerWeapon.ShootCancel();
         _onFoot.Reload.performed += ctx => _playerWeapon.Reload();
+        _onFoot.Drop.performed+= ctx => _playerWeapon.Drop();
 
     }
     #region ENABLES
@@ -43,7 +46,7 @@ public class InputManager : MonoBehaviour
     }
     #endregion
     #region GETTER SETTERS
-    public PlayerInput.OnFootActions GetOnFoot(){
+    public PlayerInput.OnFootActions GetOnFoot() {
         return _onFoot;
     }
     #endregion

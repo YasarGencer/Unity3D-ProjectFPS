@@ -5,12 +5,18 @@ public class PlayerWeaponManager : MonoBehaviour
     public static PlayerWeaponManager Instance;
     private PlayerWeapon _playerWeapon = null;
     private StructWeapon _weapon = new StructWeapon();
+    private bool _shoot = false;
     public void Weapon(StructWeapon weapon) { _weapon = weapon; }
 
     private void Awake() {
         Instance = this;
-    }    
-    public void Equip(PlayerWeapon weapon){
+    }
+    private void Update() {
+
+        if (_playerWeapon != null && _shoot == true)
+            _playerWeapon.Shoot();
+    }
+    public void Equip(PlayerWeapon weapon) {
         if(this._playerWeapon != null){
             this._playerWeapon.Drop();
         }
@@ -19,19 +25,23 @@ public class PlayerWeaponManager : MonoBehaviour
             this._playerWeapon.Equip(_weapon);
         }
     }
-    public void Shoot(){
-        if(_playerWeapon != null)
-            _playerWeapon.Shoot();
+    public void ShootPerform() {
+        _shoot = true;
     }
-    public void Reload(){
+    public void ShootStart() {
+        _shoot = true;
+    }
+    public void ShootCancel() {
+        _shoot = false;
+    }
+    public void Reload() {
         if(_playerWeapon != null)
             _playerWeapon.Reload();
     }
-    public void Drop(){
+    public void Drop() {
         if(_playerWeapon != null)
             _playerWeapon.Drop();
         if (_weapon.Name != "")
             _weapon = new StructWeapon();
-        Debug.Log(this._weapon.Name != "");
     }
 }

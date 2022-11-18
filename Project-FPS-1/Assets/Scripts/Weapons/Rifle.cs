@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class Rifle : PlayerWeapon
 {
-    public override void Shoot()
-    {
-        base.Shoot();
-        Debug.Log("Rifle Shoot");
+    public override bool Shoot() {
+        if (base.Shoot()) {
+            Debug.Log("SHOOT");
+        }
+        return true;
     }
-    public override void Reload()
-    {
-        Debug.Log("Rifle Reload");
+    public override void Reload() {
+        base.Reload();
     }
 }
