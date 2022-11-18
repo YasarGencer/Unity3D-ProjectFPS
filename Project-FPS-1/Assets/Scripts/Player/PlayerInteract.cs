@@ -8,7 +8,7 @@ public class PlayerInteract : MonoBehaviour
     private PlayerUI playerUI;
     private InputManager _inputManager;
     private void Start() {
-        _cam = GetComponent<PlayerLook>().Cam;
+        _cam = Camera.main;
         playerUI = GetComponent<PlayerUI>();
         _inputManager = GetComponent<InputManager>();
     }

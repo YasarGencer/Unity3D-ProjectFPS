@@ -7,6 +7,7 @@ public class Weapon : ScriptableObject
 }
 [System.Serializable]
 public struct StructWeapon {
+    public GameObject Object;
     public string Name;
     [TextArea] public string Description;
     [Range(0, 100f)] public float Damage;

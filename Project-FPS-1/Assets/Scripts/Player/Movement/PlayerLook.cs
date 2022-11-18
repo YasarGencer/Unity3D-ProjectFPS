@@ -3,12 +3,11 @@ using UnityEngine;
 public class PlayerLook : MonoBehaviour
 {
     private Camera _cam;
-    public Camera Cam { get { return _cam; } }
     private float _xRotation = 0f;
     [SerializeField] private Vector2 _sensivity = new Vector2(30f,30f);
 
     private void Awake() {
-        _cam = GetComponentInChildren<Camera>();
+        _cam = Camera.main;
     }
 
 
