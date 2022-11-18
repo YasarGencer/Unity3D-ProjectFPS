@@ -11,5 +11,4 @@ public class Pistol : PlayerWeapon
     public override void Reload() {
         base.Reload();
     }
-    public void EyubunAllahiYok() { }
 }
