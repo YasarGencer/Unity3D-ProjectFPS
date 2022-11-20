@@ -7,7 +7,7 @@ public class PlayerWeaponManager : MonoBehaviour
     private StructWeapon _weapon = new StructWeapon();
     public void Weapon(StructWeapon weapon) { _weapon = weapon; }
     private bool _shoot = false;
-    [SerializeField] private Transform hand;
+    public Transform Hand;
 
     private void Awake() {
         Instance = this;
@@ -23,7 +23,7 @@ public class PlayerWeaponManager : MonoBehaviour
         }
         this._playerWeapon = weapon;
         if(this._playerWeapon != null && this._weapon.Name != ""){
-            this._playerWeapon.Equip(_weapon , Instantiate(_weapon.Object, hand).GetComponent<Animator>());
+            this._playerWeapon.Equip(_weapon , Instantiate(_weapon.Object, Hand).GetComponent<Animator>());
         }
     }
     public void ShootPerform() {

@@ -24,9 +24,8 @@ public class PlayerInteract : MonoBehaviour
             if(hitInfo.collider.GetComponent<Interactable>() != null)
                 OnInteractable(hitInfo.collider.GetComponent<Interactable>());
     }
-    private void OnInteractable(Interactable interactable){
-        string text = "[" +  interactable.promptMessage + "]";
-        playerUI.SetText(playerUI.GetPrompText(),text);
+    private void OnInteractable(Interactable interactable) {
+        interactable.PrompText();
         if(_inputManager.GetOnFoot().Interact.triggered)
             interactable.BaseInteract();
     }

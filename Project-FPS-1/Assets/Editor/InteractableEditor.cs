@@ -8,7 +8,7 @@ public class InteractableEditor : Editor
         //if target is event only
         if(target.GetType() == typeof(EventOnlyInteractable)){
             //create a promt message component
-            interactable.promptMessage = EditorGUILayout.TextField("Prompt Mesaage", interactable.promptMessage);
+            interactable.PromptMessage = EditorGUILayout.TextField("Prompt Mesaage", interactable.PromptMessage);
             EditorGUILayout.HelpBox("EventOnlyInteract can ONLY use UnityEvents.", MessageType.Info);
             //add event clicks
             if(interactable.GetComponent<InteractionEvents>() == null){

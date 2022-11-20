@@ -4,11 +4,15 @@ using Unity.VisualScripting;
 
 public class PlayerUI : MonoBehaviour
 {
+    public static PlayerUI Instance;
     [SerializeField] private TextMeshProUGUI _prompText;
     [SerializeField] private GameObject weaponScreen;
     [SerializeField] private TextMeshProUGUI _weaponName, _weaponAmmo;
-    private void Start()
-    {
+    private void Awake() {
+        Instance = this;
+    }
+    private void Start() {
+        Cursor.visible = false;
         WeaponUI(new StructWeapon());
     }
     public TextMeshProUGUI GetPrompText(){

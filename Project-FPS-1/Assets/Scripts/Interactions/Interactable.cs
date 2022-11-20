@@ -4,7 +4,9 @@ public abstract class Interactable : MonoBehaviour
 {
     //add event to object 
     public bool UseEvent;
-    [Tooltip("Message shown when looking to the object")] public string promptMessage;
+    public bool OnTouch = false;
+    public bool OneTimeOnly = false;
+    [Tooltip("Message shown when looking to the object")] public string PromptMessage;
 
     //Will be called from player
     public void BaseInteract(){
@@ -14,5 +16,9 @@ public abstract class Interactable : MonoBehaviour
     }
     protected virtual void Interact(){
         //override script
+    }
+    public virtual void PrompText() {
+        string text = "[" + PromptMessage + "]";
+        PlayerUI.Instance.SetText(PlayerUI.Instance.GetPrompText(), text);
     }
 }

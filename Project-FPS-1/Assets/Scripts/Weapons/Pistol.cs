@@ -4,7 +4,7 @@ public class Pistol : PlayerWeapon
 {
     public override bool Shoot() {
         if (base.Shoot()) {
-            Debug.Log("SHOOT");
+            base.ShootRay(Weapon.Range);
         }
         return true;
     }

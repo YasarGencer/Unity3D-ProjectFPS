@@ -212,7 +212,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 036f5fcccd1062547829602371efec2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hand: {fileID: 7324509356994019981}
+  Hand: {fileID: 7324509356994019981}
 --- !u!1 &379690301881026677
 GameObject:
   m_ObjectHideFlags: 0
@@ -422,6 +422,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1167232885447918582, guid: 0dccf8ac2e84965438b84c2cb8b95e24, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1167232885487718925, guid: 0dccf8ac2e84965438b84c2cb8b95e24, type: 3}
+      propertyPath: m_fontSize
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 1167232885487718925, guid: 0dccf8ac2e84965438b84c2cb8b95e24, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 1167232885487718925, guid: 0dccf8ac2e84965438b84c2cb8b95e24, type: 3}
+      propertyPath: m_enableAutoSizing
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1167232885985041038, guid: 0dccf8ac2e84965438b84c2cb8b95e24, type: 3}

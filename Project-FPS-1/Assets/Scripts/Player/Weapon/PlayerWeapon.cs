@@ -22,27 +22,30 @@ public abstract class PlayerWeapon
         if(_weapon.Ammo > 0 && _weapon.ShootTimer < Time.time) {
             SetShootTime(_weapon.FireRate + Time.time);
             _weapon.Ammo--;
-            ShootRay();
             ShootAnim();
             if (this._weapon.Ammo <= 0)
                 Reload();
-            UIElements();
+            else
+                UIElements();
             return true;    
         }
         return false;
     }
-    public virtual void ShootRay() {
-        float dist = _weapon.Range;
+    public virtual Vector3 ShootRay(float dist) {
         //create a ray
         Ray ray = new Ray(_cam.transform.position, _cam.transform.forward);
         Debug.DrawRay(ray.origin, ray.direction * dist);
         //get collision info and make it interactable
         RaycastHit hitInfo;
-        if (Physics.Raycast(ray, out hitInfo, dist))
-            Debug.Log(hitInfo.collider.gameObject.tag);
+        if (Physics.Raycast(ray, out hitInfo, dist)) {
+            Debug.Log(hitInfo.collider.gameObject.tag + "   " + hitInfo.point);
+            return hitInfo.point;
+        }
+        return Vector2.zero;
+        
     }
     public virtual void Reload() { 
-        if(_weapon.Ammo < _weapon.MagCapasite) {
+        if(_weapon.Ammo < _weapon.MagCapasite && _weapon.MagCount > 0) {
             _weapon.Ammo = _weapon.MagCapasite;
             _weapon.MagCount--;
             UIElements();
@@ -50,6 +53,7 @@ public abstract class PlayerWeapon
     }
     public void Drop() {
         Debug.Log("Dropped a " + _weapon.Name);
+        GameObject.Destroy(_gun.gameObject);
         _ui.WeaponUI(new StructWeapon());
         
     }
@@ -60,7 +64,7 @@ public abstract class PlayerWeapon
         _weapon.ShootTimer = time;
     }
     public void ShootAnim() {
-        if(_gun != null) {
+        if (_gun != null) {
             _gun.SetTrigger("Shoot");
         }
     }

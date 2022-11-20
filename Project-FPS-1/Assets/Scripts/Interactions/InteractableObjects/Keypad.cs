@@ -13,7 +13,7 @@ public class Keypad : Interactable
     [SerializeField, Tooltip("Do not change if needed")] string _closeT = "Close The Door";
     [SerializeField, Tooltip("Do not change if needed")] string _waitT = "Please Wait";
     private void Start() {
-        promptMessage = _openT;
+        PromptMessage = _openT;
     }
     protected override void Interact(){
         if(_isInteractable){
@@ -34,11 +34,11 @@ public class Keypad : Interactable
         StartCoroutine(SetUnInteractable(_openT));
     }
     IEnumerator SetUnInteractable(string prompt){
-        promptMessage = _waitT;
+        PromptMessage = _waitT;
         _isInteractable = false;
         yield return new WaitForSeconds(_animationTimer);
         NavBaker.Instance.BAKE();
-        promptMessage = prompt;
+        PromptMessage = prompt;
         _isInteractable = true;
     }
 }
