@@ -213,6 +213,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Hand: {fileID: 7324509356994019981}
+  Particles:
+  - {fileID: 7768606295969987320, guid: 6a78e476b3d8f3549b8656cc98477d64, type: 3}
 --- !u!1 &379690301881026677
 GameObject:
   m_ObjectHideFlags: 0

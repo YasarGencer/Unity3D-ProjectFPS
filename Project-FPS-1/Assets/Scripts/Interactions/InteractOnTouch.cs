@@ -6,7 +6,7 @@ public class InteractOnTouch : MonoBehaviour
 {
     private void OnCollisionEnter(Collision collision) {
         Interactable interactable = collision.gameObject.GetComponent<Interactable>();
-        if(interactable != null)
+        if(interactable != null && interactable.OnTouch == true)
             interactable.BaseInteract();
     }
 }

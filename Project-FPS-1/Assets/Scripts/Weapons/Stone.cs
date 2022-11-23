@@ -17,11 +17,18 @@ public class Stone : PlayerWeapon
     }
     public void Rock() {
         if (_hand == null)
-            _hand = GameObject.FindGameObjectWithTag(TagManager.Instance.TagPlayer()).GetComponent<PlayerWeaponManager>().Hand;
-        GameObject throwen = GameObject.Instantiate(Weapon.Bullet, _hand.position, Quaternion.identity);
+            _hand = GameObject
+                .FindGameObjectWithTag(TagManager.Instance.TagPlayer())
+                .GetComponent<PlayerWeaponManager>().Hand;
+        GameObject throwen = GameObject.Instantiate(
+            Weapon.Bullet,
+            _hand.position, 
+            Quaternion.identity
+        );
         Rigidbody throwenRB = throwen.GetComponent<Rigidbody>();
-        Vector3 dir = (base.ShootRay(10000) - _hand.position).normalized;
+        Vector3 dir = (base.ShootRay(10000).point - _hand.position).normalized;
         Vector3 forceDir = dir * Weapon.Range;
         throwenRB.AddForce(forceDir, ForceMode.Impulse);
+        GameObject.Destroy(throwen, 5f);
     }
 }

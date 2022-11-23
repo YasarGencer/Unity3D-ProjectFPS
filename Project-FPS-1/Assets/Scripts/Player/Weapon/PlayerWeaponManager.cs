@@ -9,6 +9,8 @@ public class PlayerWeaponManager : MonoBehaviour
     private bool _shoot = false;
     public Transform Hand;
 
+    [SerializeField] private GameObject[] Particles;
+
     private void Awake() {
         Instance = this;
     }
@@ -23,7 +25,12 @@ public class PlayerWeaponManager : MonoBehaviour
         }
         this._playerWeapon = weapon;
         if(this._playerWeapon != null && this._weapon.Name != ""){
-            this._playerWeapon.Equip(_weapon , Instantiate(_weapon.Object, Hand).GetComponent<Animator>());
+            this._playerWeapon.Equip(
+                _weapon,
+                Instantiate(
+                    _weapon.Object, 
+                    Hand
+                    ).GetComponent<Animator>());
         }
     }
     public void ShootPerform() {
@@ -35,7 +42,7 @@ public class PlayerWeaponManager : MonoBehaviour
     public void ShootCancel() {
         _shoot = false;
         if(_playerWeapon != null)
-            _playerWeapon.SetShootTime(0);
+            _playerWeapon.SetShootTime(_playerWeapon.Weapon.FireRate/2);
     }
     public void Reload() {
         if(_playerWeapon != null)
@@ -46,5 +53,12 @@ public class PlayerWeaponManager : MonoBehaviour
             _playerWeapon.Drop();
         if (_weapon.Name != "")
             _weapon = new StructWeapon();
+    }
+    public GameObject CreateParticle(Vector3 pos){
+        return Instantiate(
+            Particles[0],
+            pos,
+            Quaternion.identity
+            );
     }
 }

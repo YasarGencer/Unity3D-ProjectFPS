@@ -14,8 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weapon:
     Object: {fileID: 5209990166014971614, guid: a8cdad430d9eb3243be62207d5890b73, type: 3}
+    Bullet: {fileID: 0}
     Name: Pistol
     Description: mesut komser
+    ShootParticle: {fileID: 5327642850447583405, guid: 55a7f53bc16b35f44895aceadc53086f, type: 3}
     Damage: 25
     FireRate: 1
     MagCapasite: 7

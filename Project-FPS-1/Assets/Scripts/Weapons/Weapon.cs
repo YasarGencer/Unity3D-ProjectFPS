@@ -11,6 +11,7 @@ public struct StructWeapon {
     public GameObject Bullet;
     public string Name;
     [TextArea] public string Description;
+    public GameObject ShootParticle;
     [Range(0, 100f)] public float Damage;
     [Range(0, 3f)] public float FireRate;
     [Range(0, 100f)] public float MagCapasite;
